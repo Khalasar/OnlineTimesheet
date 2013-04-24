@@ -17,11 +17,11 @@ class EntryTest < ActiveSupport::TestCase
 
   test "calc_hours" do
     come = Time.now
-    gone = Time.now + 5.hours
+    gone = come + 5.hours
     entry = Entry.new({day: Date.today, come: come, gone: gone})
     time_difference = gone.utc - come.utc
 
-    assert_equal entry.calc_hours, time_difference
+    assert_equal entry.calc_hours, 5.hours
   end
 
 end
