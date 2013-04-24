@@ -1,3 +1,3 @@
 class Timesheets < ActiveRecord::Base
-  attr_accessible :month
+  attr_accessible :month, :year
 end
