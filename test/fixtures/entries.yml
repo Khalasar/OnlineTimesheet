@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  day: 2013-04-24
+  come: 2013-04-24 12:34:28
+  gone: 2013-04-24 12:34:28
+
+two:
+  day: 2013-04-24
+  come: 2013-04-24 12:34:28
+  gone: 2013-04-24 12:34:28
