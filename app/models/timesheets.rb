@@ -1,5 +1,5 @@
 class Timesheets < ActiveRecord::Base
-  attr_accessible :month, :year
+  attr_accessible :month, :year, :user_id
   belongs_to :user
   has_many :entries
 

@@ -7,9 +7,9 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id 
       redirect_to timesheets_path,
-      "Erfolgreiches Log in"
+      notice: "Erfolgreiches Log in."
     else
-      flash.now.alert = "Fehlerhafte Email-Adresse oder Passwort"
+      flash.now.alert = "Fehlerhafter Name oder Passwort."
       render "new"
     end
   end
@@ -17,6 +17,6 @@ class SessionsController < ApplicationController
   def destroy   
     session[:user_id] = nil
     redirect_to root_path,
-    notice: "Sie haben sich ausgeloggt"
+    notice: "Sie haben sich ausgeloggt."
   end
 end
