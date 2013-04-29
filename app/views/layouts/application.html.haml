@@ -6,4 +6,9 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
+    %h1 Meine Stundenzettel
+    - if flash[:notice]
+      = flash[:notice]
+    - if flash[:alert]
+      = flash[:alert]
     = yield
