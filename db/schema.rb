@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130424130435) do
+ActiveRecord::Schema.define(:version => 20130429074842) do
 
   create_table "entries", :force => true do |t|
     t.date     "day"
@@ -33,8 +33,9 @@ ActiveRecord::Schema.define(:version => 20130424130435) do
     t.string   "lastname"
     t.string   "firstname"
     t.string   "password"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "password_digest"
   end
 
 end

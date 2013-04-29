@@ -14,14 +14,4 @@ class EntryTest < ActiveSupport::TestCase
     assert entry.valid?
     assert entry.save
   end
-
-  test "calc_hours" do
-    come = Time.now
-    gone = come + 5.hours
-    entry = Entry.new({day: Date.today, come: come, gone: gone})
-    time_difference = gone.utc - come.utc
-
-    assert_equal entry.calc_hours, 5.hours
-  end
-
 end

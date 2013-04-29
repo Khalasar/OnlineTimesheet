@@ -8,21 +8,19 @@ class Daylist
 
   def calc_break
     difference = 0
-    come_array = Array.new
-    gone_array = Array.new
 
-    @entries.each do |entry|
-      come_array.push(entry.come)
-      gone_array.push(entry.gone)  
-    end
-
-    i =  0
-    while i < come_array.length - 1 do
-      difference += come_array[i+1] - gone_array[i]
-      i += 1
+    @entries.each.with_index do |entry, i|
+      difference += @entries[i+1].come - @entries[i].gone unless entry == @entries.last
     end
 
     difference
   end
 
+  def spend_time
+    secs = 0
+    @entries.each do |entry| 
+      secs += entry.gone - entry.come
+    end
+    secs
+  end
 end
