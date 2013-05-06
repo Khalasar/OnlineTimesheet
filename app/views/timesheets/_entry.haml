@@ -1,0 +1,19 @@
+%tr
+  %td
+    = entry.day
+  %td
+    - if entry.come
+      = entry.come.to_formatted_s(:short)
+  %td
+    - if entry.gone
+      = entry.gone.to_formatted_s(:short)
+  %td   
+    = timesheet.daylist_for_date(entry.day).calc_break
+  %td
+    = timesheet.daylist_for_date(entry.day).spend_time
+  %td
+    - if !entry.gone
+      = form_for [timesheet, entry] do |f|
+        = f.submit "Gegangen"
+    - else
+      = link_to "Löschen", timesheet_entry_path(timesheet,entry), :confirm => "Wollen Sie diesen Eintrag wirklich löschen?", :method => :delete

@@ -1,32 +1,9 @@
 class TimesheetsController < ApplicationController
+  before_filter :require_login
+
   def new
-    #date = Date.today
-    #@timesheet = current_user.timesheets.build({month: date.month, year: date.year})
-    @bookmark = current_user.bookmarks.build
-  end
-
-  def index
-    #@timesheets = current_user.timesheets
-    #@act_timesheet = Timesheets.find_by_month(Date.today.month)
-    #if @act_timesheet
-
-    #else
-    #date = Date.today
-    #@act_timesheet = @timesheets.build({month: date.month, year: date.year})
-    #end
-    @timesheets = current_user.timesheets
-  end
-
-  def edit
-    @timesheet = current_user.timesheets.find[params[:id]]
-  end
-
-  def show
-    @timesheet = current_user.timesheets.find(params[:id])
-  end
-
-  def create 
-    @timesheet = current_user.timesheets.build(params[:timesheet])
+    date = Date.today
+    @timesheet = current_user.timesheets.build(:month => date.month, :year => date.year)
     if @timesheet.save
       redirect_to timesheets_path, notice: "Ein neuer Stundenzettel wurde erstellt."
     else
@@ -34,12 +11,22 @@ class TimesheetsController < ApplicationController
     end
   end
 
-  def update
+  def index
+    @timesheets = current_user.timesheets
+  end
+
+  def show
     @timesheet = current_user.timesheets.find(params[:id])
-    if @timesheet.update_attributes(params[:timesheet])
-      redirect_to timesheets_path, notice: "Der Stundenzettel wurd geändert."
+    @entries = @timesheet.entries
+  end
+
+  def create 
+    date = Date.today
+    @timesheet = current_user.timesheets.build(:month => date.month, :year => date.year)
+    if @timesheet.save
+      redirect_to timesheets_path, notice: "Ein neuer Stundenzettel wurde erstellt."
     else
-      render "edit"
+      render "new"
     end
   end
 
@@ -49,14 +36,19 @@ class TimesheetsController < ApplicationController
     redirect_to timesheets_url, notice: "Der Stundenzettel wurde gelöscht."
   end
 
-  #def act_timesheets
-  #  @timesheets.each |entry| do
-  #    if entry.year == Date.today.year && entry.month == Date.today.month
-  #      @act_timesheet = entry
-  #    else
-  #      render "create"
-  #    end
-  #  end
-  #end
+
+  def require_login
+    unless user_signed_in?
+      redirect_to login_path,
+      notice: "Bitte loggen Sie sich ein."
+    end
+  end
+
+  def update
+    @timesheet = current_user.timesheets.find(params[:id])
+    now = Time.zone.now.utc
+    @entry = @timesheet.entries.create(:day => now.to_date, :come => now)
+    redirect_to timesheet_path
+  end
 
 end

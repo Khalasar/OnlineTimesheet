@@ -1,3 +1,10 @@
-- @title = ""
-%h2 Stundenzettel
-%h3 Name: Username Monat: Monatsname
+%h2 Neuen Stundenzettel anlegen
+= form_for(@timesheet) do |f|
+  - if @timesheet.user.errors.any?
+    %ul
+      - @timesheet.user.errors.full_messages.each do |msg|
+        %li= msg
+  %p
+    = f.label :month, "Monat"
+    = f.text_field :month
+  %p= f.submit "anlegen"

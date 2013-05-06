@@ -1,21 +1,6 @@
-- @title = "Stundenzettel"
+- @title = "Meine Stundenzettel"
 %h2 Stundenzettel
-//%h3 
-//  Name:
-//  = @current_user.fullname
-//%h3 
-//  Monat:
-//  = @act_timesheet.month
-//%table(border = "1")
-//  %tr
-//    %th gekommen
-//    %th gegangen
-//    %th Pause
-//    %th Stunden
-//= form_tag do
-//  %p= button_tag "gekommen"
-//  %p= button_tag "gegangen"
 %ul
   = render :partial => "timesheet", :collection => @timesheets
 %p
-  = link_to "Neuer Stundenzettel", new_timesheets_path
+  = link_to "Neuer Stundenzettel", new_timesheet_path

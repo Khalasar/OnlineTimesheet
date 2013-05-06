@@ -1,2 +1,3 @@
 %li
-  = link_to timesheet.month, entry_path(timesheet)
+  = (link_to timesheet.month, timesheet_path(timesheet)) + " ("
+  = (link_to "Löschen", timesheet, :confirm => "Wollen Sie diesen Stundenzettel wirklich löschen?", :method => :delete) + ")"
