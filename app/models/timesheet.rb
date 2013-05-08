@@ -8,8 +8,8 @@ class Timesheet < ActiveRecord::Base
     daylist = Daylist.new(entries_for_date)
   end
 
-  def number_to_word(month)
-     Date::MONTHNAMES[month]
+  def entry_addable?
+    entries.all?(&:complete?)
   end
 
 end

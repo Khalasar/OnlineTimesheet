@@ -5,7 +5,7 @@ class DaylistTest < ActiveSupport::TestCase
   test "calc_break" do
     date = Date.today
 
-    timesheets = Timesheets.new ({month: date.month, year: date.year})
+    timesheets = Timesheet.new ({month: date.month, year: date.year})
 
     time = Time.now
 
@@ -16,13 +16,13 @@ class DaylistTest < ActiveSupport::TestCase
 
     daylist = timesheets.daylist_for_date(date)
 
-    assert_equal daylist.calc_break, 30.minutes
+    assert_equal daylist.calc_break, 0.5
   end
 
   test "spend_time" do
     date = Date.today
 
-    timesheets = Timesheets.new ({month: date.month, year: date.year})
+    timesheets = Timesheet.new ({month: date.month, year: date.year})
 
     time = Time.now
 
@@ -33,7 +33,7 @@ class DaylistTest < ActiveSupport::TestCase
 
     daylist = timesheets.daylist_for_date(date)
 
-    assert_equal daylist.spend_time, 1.hours
+    assert_equal daylist.spend_time, 1
   end
 
 end

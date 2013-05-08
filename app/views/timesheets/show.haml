@@ -13,6 +13,7 @@
     %th Pause
     %th Stunden
   = render :partial => "entry", :collection => @entries, :locals => { :timesheet => @timesheet }
+
 = form_for(@timesheet) do |f|
-  = button_tag "Gekommen"
+  = f.submit "Gekommen", :disabled => !@timesheet.entry_addable?
 = link_to "Zurück", timesheets_path

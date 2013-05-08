@@ -11,12 +11,16 @@ class Daylist
 
     @entries.each.with_index do |entry, i|
       if(entry.gone && entry.come)
-        difference += @entries[i+1].come - @entries[i].gone unless entry == @entries.last
-    
+        difference += @entries[i+1].come - @entries[i].gone unless entry == @entries.last    
       end
     end
 
-    difference
+    secs_to_hours difference
+  end
+
+  def secs_to_hours (diff)
+    hours = diff / 3600
+    hours.round(2)
   end
 
   def spend_time
@@ -26,6 +30,6 @@ class Daylist
         secs += entry.gone - entry.come
       end
     end
-    secs
+    secs_to_hours secs
   end
 end
