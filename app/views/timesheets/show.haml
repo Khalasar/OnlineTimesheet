@@ -1,11 +1,11 @@
 - @title = "Stundenzettel"
 %h2
   Monat:
-  = @timesheet.month
+  = number_to_word(@timesheet.month)+" #{@timesheet.year}"
 %h3
   Name:
   = @current_user.fullname
-%table(border = "1")
+%table{ :class => 'table table-hover' }
   %tr
     %th Tag
     %th gekommen
@@ -15,5 +15,5 @@
   = render :partial => "entry", :collection => @entries, :locals => { :timesheet => @timesheet }
 
 = form_for(@timesheet) do |f|
-  = f.submit "Gekommen", :disabled => !@timesheet.entry_addable?
+  = f.submit "Gekommen", :disabled => !@timesheet.entry_addable?, :class=> 'btn btn-primary'
 = link_to "Zurück", timesheets_path

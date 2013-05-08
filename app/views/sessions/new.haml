@@ -1,13 +1,12 @@
+- @title = "Log in"
 %h2= "Log in"
-= form_tag sessions_path do
+= form_tag sessions_path do {:class => 'form form-inline'}
   %p
-    = label_tag :firstname, "Vorname"
-    = text_field_tag :firstname, params[:firstname]
+    = text_field_tag :firstname, params[:firstname], :class => 'input-small', :placeholder => 'Vorname'
   %p
-    = label_tag :lastname, "Nachname"
-    = text_field_tag :lastname, params[:lastname]
+    = text_field_tag :lastname, params[:lastname], :class => 'input-small', :placeholder => 'Nachname'
   %p
     = label_tag :password, "Passwort"
     = password_field_tag :password
-  %p= submit_tag "Log in"
+  %p= submit_tag "Log in", :class => 'btn'
 = link_to "Neuen Benutzer anlegen", new_user_path

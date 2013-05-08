@@ -1,3 +1,64 @@
 // Place all the styles related to the timesheets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$blue: #006999;
+$green: #008414;
+$red: #990A0C;
+
+* {
+  margin: 0;
+}
+
+body {
+  background-color: #ddd;
+}
+
+#container {
+  width: 700px;
+  margin: 0 auto;
+}
+#header {
+  background-color: $blue;
+  padding: 10px;
+  color: #fff;
+  text-align: center;
+}
+#content {
+  border: 2px solid $blue;
+  padding: 10px;
+  background-color: #fff;
+  min-height: 200px;
+
+  h2 {
+    font-size: 20px;
+    margin-bottom: 0.5em;
+  }
+  h3 {
+    font-size: 17px;
+    margin-bottom: 0.5em;
+  }
+}
+#notice {
+  border: 1px solid $green;
+  color: $green;
+  background-color: #D8FFBB;
+}
+#alert {
+  border: 1px solid $red;
+  color: $red;
+  background-color: #FFA894;
+}
+label {
+  display: block;
+}
+input {
+  margin: 0.5em 0;
+}
+input[type="submit"] {
+  margin-top: 2em;
+}
+
+.field_with_errors {
+  background-color: red
+}

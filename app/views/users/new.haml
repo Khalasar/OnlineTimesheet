@@ -1,3 +1,4 @@
+- @title = "Neuer Benutzer"
 %h2 Neuen Benutzer anlegen
 = form_for(@user) do |f|
   - if @user.errors.any?
@@ -16,4 +17,4 @@
   %p
     = f.label :password_confirmation, "Passwortbestätigung"
     = f.password_field :password_confirmation
-  %p= f.submit "Log in"
+  %p= f.submit "Anlegen"

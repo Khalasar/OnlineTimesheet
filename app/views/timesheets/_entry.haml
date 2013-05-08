@@ -14,6 +14,6 @@
   %td
     - if !entry.gone
       = form_for [timesheet, entry] do |f|
-        = f.submit "Gegangen"
+        = f.submit "Gegangen", :class => 'btn btn-small'
     - else
       = link_to "Löschen", timesheet_entry_path(timesheet,entry), :confirm => "Wollen Sie diesen Eintrag wirklich löschen?", :method => :delete

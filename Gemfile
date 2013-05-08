@@ -12,6 +12,8 @@ gem 'haml'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+  gem 'anjlab-bootstrap-rails', '>= 2.3', :require => 'bootstrap-rails'
+
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
 
@@ -39,3 +41,4 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use debugger
 # gem 'debugger'
+gem "factory_girl_rails"

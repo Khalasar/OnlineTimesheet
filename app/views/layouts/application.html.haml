@@ -12,9 +12,11 @@
         %h1 Meine Stundenzettel
       #content
         - if flash[:notice]
-          = flash[:notice]
+          %p{:class => "alert alert-success"}
+            = flash[:notice]
         - if flash[:alert]
-          = flash[:alert]
+          %p{:class => "alert"}
+            = flash[:alert]
         = yield
       #footer
         - if user_signed_in?

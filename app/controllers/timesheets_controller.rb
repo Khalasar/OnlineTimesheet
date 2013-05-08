@@ -6,8 +6,6 @@ class TimesheetsController < ApplicationController
     @timesheet = current_user.timesheets.build(:month => date.month, :year => date.year)
     if @timesheet.save
       redirect_to timesheets_path, notice: "Ein neuer Stundenzettel wurde erstellt."
-    else
-      render "new"
     end
   end
 
@@ -18,16 +16,6 @@ class TimesheetsController < ApplicationController
   def show
     @timesheet = current_user.timesheets.find(params[:id])
     @entries = @timesheet.entries
-  end
-
-  def create 
-    date = Date.today
-    @timesheet = current_user.timesheets.build(:month => date.month, :year => date.year)
-    if @timesheet.save
-      redirect_to timesheets_path, notice: "Ein neuer Stundenzettel wurde erstellt."
-    else
-      render "new"
-    end
   end
 
   def destroy
