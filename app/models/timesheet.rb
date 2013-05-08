@@ -4,7 +4,12 @@ class Timesheet < ActiveRecord::Base
   has_many :entries, :dependent => :destroy
 
   def daylist_for_date(date)
-      entries_for_date = entries.select { |entry| entry.day == date}
-      daylist = Daylist.new(entries_for_date)
+    entries_for_date = entries.select { |entry| entry.day == date}
+    daylist = Daylist.new(entries_for_date)
   end
+
+  def number_to_word(month)
+     Date::MONTHNAMES[month]
+  end
+
 end
