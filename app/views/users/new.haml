@@ -1,0 +1,19 @@
+%h2 Neuen Benutzer anlegen
+= form_for(@user) do |f|
+  - if @user.errors.any?
+    %ul
+      - @user.errors.full_messages.each do |msg|
+        %li= msg
+  %p
+    = f.label :firstname, "Vorname"
+    = f.text_field :firstname
+  %p
+    = f.label :lastname, "Nachname"
+    = f.text_field :lastname
+  %p
+    = f.label :password, "Passwort"
+    = f.password_field :password
+  %p
+    = f.label :password_confirmation, "Passwortbestätigung"
+    = f.password_field :password_confirmation
+  %p= f.submit "Log in"

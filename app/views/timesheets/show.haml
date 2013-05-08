@@ -1,0 +1,19 @@
+- @title = "Stundenzettel"
+%h2
+  Monat:
+  = @timesheet.month
+%h3
+  Name:
+  = @current_user.fullname
+%table(border = "1")
+  %tr
+    %th Tag
+    %th gekommen
+    %th gegangen
+    %th Pause
+    %th Stunden
+  = render :partial => "entry", :collection => @entries, :locals => { :timesheet => @timesheet }
+
+= form_for(@timesheet) do |f|
+  = f.submit "Gekommen", :disabled => !@timesheet.entry_addable?
+= link_to "Zurück", timesheets_path
